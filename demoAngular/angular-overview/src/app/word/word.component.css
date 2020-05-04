@@ -1,0 +1,12 @@
+.wordRed{
+  color: red;
+}
+.wordBlack{
+  color: blue;
+}
+
+.word{
+  background-color: aquamarine;
+  margin: 5px;
+  width: 150px;
+}

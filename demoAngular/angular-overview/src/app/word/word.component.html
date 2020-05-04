@@ -1,0 +1,25 @@
+<button (click)="toggle()">toggle</button>
+<div *ngIf="isShow">
+  <input placeholder="English" [(ngModel)]="newEn">
+  <input placeholder="Vietnam" [(ngModel)]="newVn">
+  <button (click)="add();">Add</button>
+</div>
+<br>
+<select [(ngModel)]="condition">
+  <option value="view_all">view all</option>
+  <option value="true">view true</option>
+  <option value="false">view false</option>
+
+</select>
+
+
+<div *ngFor="let word of arrWords">
+  <!--  <h4 [ngStyle]="{color:word.memorized?'green':'red'}">{{word.en}}</h4>-->
+  <div *ngIf="(condition==='view_all')||(condition===word.memorized.toString())" class="word">
+    <h4>{{word.id}}</h4>
+    <h4 [class]="word.memorized?'wordRed':'wordBlack'">{{word.en}}</h4>
+    <h4>{{word.vn}}</h4>
+    <button (click)="delete(word.id)">delete</button>
+  </div>
+</div>
+<p>{{arrWords[1].id}}</p>
