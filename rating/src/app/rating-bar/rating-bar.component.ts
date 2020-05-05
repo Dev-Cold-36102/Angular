@@ -1,36 +1,40 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, SimpleChanges} from '@angular/core';
+import index from "@angular/cli/lib/cli";
+
 interface IRatingUnit {
   value: number;
   active: boolean;
 }
+
 @Component({
   selector: 'app-rating-bar',
   templateUrl: './rating-bar.component.html',
-  styleUrls: ['./rating-bar.component.scss']
+  styleUrls: ['./rating-bar.component.css']
 })
-export class RatingBarComponent implements OnInit, OnChanges {
+
+export class RatingBarComponent implements OnInit {
   @Input()
   max = 10;
   @Input()
-  ratingValue = 0;
+  ratingValue = 5;
   @Input()
   showRatingValue = true;
 
   @Output()
   rateChange = new EventEmitter<number>();
-
   ratingUnits: Array<IRatingUnit> = [];
 
-  constructor() { }
-
-  ngOnChanges(changes: SimpleChanges) {
-    if ('max' in changes) {
-      let max = changes.max.currentValue;
-      max = typeof max === 'undefined' ? 5 : max;
-      this.max = max;
-      this.calculate(max, this.ratingValue);
-    }
+  constructor() {
   }
+
+  // ngOnChanges(changes: SimpleChanges) {
+  //   if ('max' in changes) {
+  //     let max = changes.max.currentValue;
+  //     max = typeof max === 'undefined' ? 5 : max;
+  //     this.max = max;
+  //     this.calculate(max, this.ratingValue);
+  //   }
+  // }
 
   calculate(max, ratingValue) {
     this.ratingUnits = Array.from({length: max},
@@ -38,20 +42,23 @@ export class RatingBarComponent implements OnInit, OnChanges {
         value: index + 1,
         active: index < ratingValue
       }));
+
   }
 
-  ngOnInit() {
-    this.calculate(this.max, this.ratingValue);
+  ngOnInit(): void {
+    this.calculate(this.max,this.ratingValue);
   }
 
-  select(index) {
-    this.ratingValue = index + 1;
-    this.ratingUnits.forEach((item, idx) => item.active = idx < this.ratingValue);
+  select(index){
+    this.ratingValue=index+1;
+    this.ratingUnits.forEach((item,index)=>item.active=index<this.ratingValue);
     this.rateChange.emit(this.ratingValue);
   }
-  enter(index) {
-    this.ratingUnits.forEach((item, idx) => item.active = idx <= index);
+
+  enter(idx){
+    this.ratingUnits.forEach((item,index)=>item.active=index<=idx);
   }
+
   reset() {
     this.ratingUnits.forEach((item, idx) => item.active = idx < this.ratingValue);
   }
