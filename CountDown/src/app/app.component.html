@@ -1,10 +1,25 @@
 <h2>Today's article</h2>
+
 <hr>
+
 <div *ngFor="let art of articles">
   <a href="{{art.url}}" target="_blank">{{art.title}}</a>
+  {{likes}} likes. <button (click)="likeThis()">Like</button>
+
+
+
 </div>
 <hr>
-<!--<textarea [(ngModel)]="articles.title" cols="70"></textarea>-->
-<!--<textarea [(ngModel)]="articles.url" cols="70"></textarea>-->
-<!--&lt;!&ndash;<input (click)="updateArticle()" type="button" value="Update">&ndash;&gt;-->
-<!--<button (click)="addArticle()">Add</button>-->
+<textarea [(ngModel)]="article.title" cols="70"></textarea>
+<textarea value="{{article.title}}" cols="70"></textarea>
+<textarea [(ngModel)]="article.url" cols="70"></textarea>
+<br/>
+<!--<button>Add Article</button>-->
+<div >
+  <p>Title</p>
+  <input type="text" id="new-title" value="">
+  <p>URL</p>
+  <input type="text" id="new-url" value="">
+  <button type="button" (click)="addArticle()">add</button>
+</div>
+
