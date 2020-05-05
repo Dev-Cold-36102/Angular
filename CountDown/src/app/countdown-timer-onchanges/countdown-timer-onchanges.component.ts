@@ -1,17 +1,35 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  SimpleChanges
+} from '@angular/core';
 
 @Component({
-  selector: 'app-countdown-timer',
-  templateUrl: './countdown-timer.component.html',
-  styleUrls: ['./countdown-timer.component.scss']
+  selector: 'app-countdown-timer-onchanges',
+  templateUrl: './countdown-timer-onchanges.component.html',
+  styleUrls: ['./countdown-timer-onchanges.component.scss']
 })
-export class CountdownTimerComponent implements OnInit, OnDestroy {
+export class CountdownTimerOnchangesComponent
+  implements OnChanges, OnInit, OnDestroy {
+
   private intervalId = 0;
   message = '';
   remainingTime: number;
 
   @Input()
   seconds = 11;
+
+  ngOnChanges(changes: SimpleChanges) {
+    if ('seconds' in changes) {
+      let v = changes.seconds.currentValue;
+      v = typeof v === 'undefined' ? 11 : v;
+      const vFixed = Number(v);
+      this.seconds = Number.isNaN(vFixed) ? 11 : vFixed;
+    }
+  }
 
   clearTimer() {
     clearInterval(this.intervalId);

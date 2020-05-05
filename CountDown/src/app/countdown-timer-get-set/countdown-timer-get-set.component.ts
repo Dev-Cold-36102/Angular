@@ -1,17 +1,25 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-countdown-timer',
-  templateUrl: './countdown-timer.component.html',
-  styleUrls: ['./countdown-timer.component.scss']
+  selector: 'app-countdown-timer-get-set',
+  templateUrl: './countdown-timer-get-set.component.html',
+  styleUrls: ['./countdown-timer-get-set.component.scss']
 })
-export class CountdownTimerComponent implements OnInit, OnDestroy {
+export class CountdownTimerGetSetComponent implements OnInit, OnDestroy {
   private intervalId = 0;
   message = '';
   remainingTime: number;
 
+  private _seconds = 11;
   @Input()
-  seconds = 11;
+  get seconds(): number {
+    return this._seconds;
+  }
+  set seconds(v) {
+    v = typeof v === 'undefined' ? 11 : v;
+    const vFixed = Number(v);
+    this._seconds = Number.isNaN(vFixed) ? 11 : vFixed;
+  }
 
   clearTimer() {
     clearInterval(this.intervalId);
