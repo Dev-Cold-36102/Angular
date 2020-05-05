@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -9,12 +9,17 @@ export class AppComponent {
   title = 'angular-component-template';
   countdownMsg = '';
   countdownAliasMsg = '';
+
   finishCountdown() {
     this.countdownMsg = 'Finished!';
   }
 
-  endCountdown() {
-    this.countdownAliasMsg = 'Ended!';
+  endCountdown(isEnd) {
+    if (isEnd) {
+      this.countdownAliasMsg = 'Ended!';
+    } else {
+      this.countdownAliasMsg = '';
+    }
   }
 
   onRateChange(value) {

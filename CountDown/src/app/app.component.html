@@ -14,7 +14,7 @@
 </app-countdown-timer-event>
 <p>{{ countdownMsg }}</p> -->
 
-<app-countdown-timer-event-alias seconds="10" (timerEnd)="endCountdown()">
+<app-countdown-timer-event-alias seconds="5" (timeout)="endCountdown($event)">
 </app-countdown-timer-event-alias>
 <p>{{ countdownAliasMsg }}</p>
 
