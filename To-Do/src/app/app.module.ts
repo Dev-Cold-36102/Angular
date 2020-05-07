@@ -2,22 +2,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import {FormsModule} from '@angular/forms';
-import { ArticleComponent } from './article/article.component';
-import {HttpClientModule} from '@angular/common/http';
-
+import { TodoComponent } from './todo/todo.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
-    ArticleComponent
+    TodoComponent
   ],
     imports: [
         BrowserModule,
-        FormsModule,
-      HttpClientModule
+        ReactiveFormsModule
     ],
   providers: [],
   bootstrap: [AppComponent]

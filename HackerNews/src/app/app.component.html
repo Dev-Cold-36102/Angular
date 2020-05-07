@@ -1,11 +1,3 @@
-<app-navbar></app-navbar>
-
-<app-news></app-news>
-
-<div >
-  <p>Title</p>
-  <input type="text" id="new-title" value="">
-  <p>URL</p>
-  <input type="text" id="new-url" value="">
-  <button type="button" (click)="addArticle()">add</button>
-</div>
+<app-article *ngFor="let item of articles"
+             [article]="item">
+</app-article>
