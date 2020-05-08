@@ -1,6 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {Article} from './Article';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {SearchService} from './search.service';
 
 
 @Component({
@@ -10,21 +11,23 @@ import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 })
 export class AppComponent {
 
-  constructor(private httpClient: HttpClient) {
+  articles: Article[] = [];
+
+
+  constructor(private  httpClient: HttpClient, private searchService: SearchService) {
     this.getNewsFromAPI();
   }
 
-  articles: Article[] = [];
 
   getNewsFromAPI() {
     this.httpClient
-      .get<Article[]>('https://api.hnpwa.com/v0/news/1.json')
+      .get<Article[]>('http://localhost:8080/home')
       .subscribe((newsItems) => {
         this.articles = newsItems;
       });
   }
 
-  // edit(article:Article){
-  //
-  // }
+  searchByTilte(event: Article[]) {
+    this.articles = event;
+  }
 }

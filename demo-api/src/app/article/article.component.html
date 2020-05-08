@@ -1,0 +1,31 @@
+<div class="container">
+  <table class="table table-striped" style="background-color: cornflowerblue">
+    <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <th scope="row">{{newsArticle.title}}</th>
+      <td>
+        <a [href]="newsArticle.url" target="_blank">
+          <button class="btn btn-primary btn-sm">READ</button>
+        </a>
+        <div class="btn-group">
+          <button type="button" class="btn btn-info  btn-sm" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">
+            EDIT
+          </button>
+          <app-edit-article [articleEdit]="newsArticle" (onEditArticle)="loadPage()"></app-edit-article>
+        </div>
+        <button class="btn btn-danger btn-sm" (click)="submitDelete(newsArticle.id)">DELETE</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+
+

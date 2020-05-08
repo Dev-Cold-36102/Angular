@@ -1,3 +1,5 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
 <h2 class="text-center">
   Todo App
 </h2>
@@ -6,11 +8,12 @@
     <input class="form-control" type="text" [formControl]="userInput" (change)="onChange()">
   </div>
 
-  <ul>
-    <li (click)="toggleTodo(i)"
-        [class.complete]="todo.complete"
-        *ngFor="let todo of todos; index as i">
+  <ul
+    [class.complete]="todo.complete"
+    *ngFor="let todo of todos; index as i">
+    <li (click)="toggleTodo(i)">
       {{todo.content}}
     </li>
+    <button>edit</button>
   </ul>
 </div>

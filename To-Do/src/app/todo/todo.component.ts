@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormControl} from '@angular/forms';
 
 interface ITodo {
   id: number;
@@ -17,14 +17,16 @@ let _id = 1;
 export class TodoComponent implements OnInit {
   userInput = new FormControl();
   todos: Array<ITodo> = [];
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
   onChange() {
     const {value} = this.userInput;
-    if (value) {
+    if (this.userInput) {
       const todo: ITodo = {
         id: _id++,
         content: value,
@@ -39,4 +41,7 @@ export class TodoComponent implements OnInit {
     this.todos[i].complete = !this.todos[i].complete;
   }
 
+
 }
+
+
