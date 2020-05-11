@@ -1,5 +1,6 @@
 <app-nav (onCreateArticle)="getNewsFromAPI()" (onSearchByTitle)="searchByTilte($event)"></app-nav>
 <br>
+
 <app-article *ngFor="let item of articles"
              [article]="item" (onclickSave)="getNewsFromAPI()">
 </app-article>

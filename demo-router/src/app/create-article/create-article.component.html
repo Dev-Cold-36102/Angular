@@ -1,0 +1,15 @@
+<div class="dropdown-menu" style="background-color: #c3e5bb">
+  <form class="px-4 py-3" [formGroup]="articleForm" (ngSubmit)="onSave()">
+    <div class="form-group">
+      <label for="exampleDropdownFormTitle">Title</label>
+      <input style="width: 450px" formControlName="title" type="text" class="form-control" id="exampleDropdownFormTitle">
+      <small *ngIf="articleForm.controls.title.errors" id="emailHelp" class="form-text text-muted text-danger">Tiêu đề phải ít nhất 5 kí tự.</small>
+
+    </div>
+    <div class="form-group">
+      <label for="exampleDropdownFormURL">URL</label>
+      <input style="width: 450px" formControlName="url" type="text" class="form-control" id="exampleDropdownFormURL">
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+  </form>
+</div>
