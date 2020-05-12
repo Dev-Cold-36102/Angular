@@ -1,0 +1,11 @@
+<app-nav  (onSearchByTitle)="searchByTilte($event)" (onCreateBook)="getBooksFromAPI()"></app-nav>
+<!--<app-nav></app-nav>-->
+<br>
+<div  class="container">
+  <h4>WE HAVE {{books.length}} BOOKS</h4>
+  <br>
+  <app-book *ngFor="let item of books"
+               [book]="item" (onclickSave)="getBooksFromAPI()">
+  </app-book>
+</div>
+

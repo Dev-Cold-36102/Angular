@@ -1,0 +1,28 @@
+<div class="container">
+  <fieldset>
+    <legend>ADD NEW BOOK</legend>
+    <form class="px-4 py-3" [formGroup]="bookForm" (ngSubmit)="onSave()">
+      <div class="form-group">
+        <label for="exampleDropdownFormTitle">Title</label>
+        <input style="width: 450px" formControlName="title" type="text" class="form-control"
+               id="exampleDropdownFormTitle"
+        >
+        <small *ngIf="bookForm.controls.title.errors" id="emailHelp" class="form-text text-muted text-danger">Tiêu đề
+          phải
+          ít nhất 5 kí tự.</small>
+      </div>
+      <div class="form-group">
+        <label for="exampleDropdownFormAuthor">Author</label>
+        <input style="width: 450px" formControlName="author" type="text" class="form-control"
+               id="exampleDropdownFormAuthor">
+      </div>
+      <div class="form-group">
+        <label for="exampleDropdownFormDescription">Description</label>
+        <textarea style="width: 450px" formControlName="description" type="text" class="form-control"
+                  id="exampleDropdownFormDescription"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="aleart()">Save</button>
+      <button type="submit" class="btn btn-danger" routerLink="">Home</button>
+    </form>
+  </fieldset>
+</div>
